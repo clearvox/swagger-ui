@@ -93,6 +93,7 @@ window.SwaggerUi = Backbone.Router.extend({
   // Event handler for when url/key is received from user
   updateSwaggerUi: function(data){
     this.options.url = data.url;
+    this.options.host = data.host;
     this.load();
   },
 
@@ -114,7 +115,7 @@ window.SwaggerUi = Backbone.Router.extend({
       this.options.authorizations = this.api.clientAuthorizations.authz;
     }
     this.options.url = url;
-    this.headerView.update(url);
+    this.headerView.update(this.options);
 
     this.api = new SwaggerClient(this.options);
   },

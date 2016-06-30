@@ -20,9 +20,10 @@
     "pretest": "npm run jshint",
     "test": "mocha"
   },
-  "repository": {
+  "repository":
+  {
     "type": "git",
-    "url": "https://github.com/swagger-api/swagger-ui.git"
+    "url": "https://github.com/clearvox/swagger-ui.git"
   },
   "readmeFilename": "README.md",
   "devDependencies": {
@@ -58,6 +59,6 @@
     "phantomjs": "1.9.19",
     "selenium-webdriver": "^2.45.0",
     "sinon-chai": "2.8.0",
-    "swagger-client": "2.1.15"
+    "swagger-client": "clearvox/swagger-js"
   }
 }
