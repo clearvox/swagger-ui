@@ -27,6 +27,8 @@ export default class Topbar extends React.Component {
     onHostChange = (e) => {
         let {target: {value}} = e
         this.setState({host: value})
+
+        this.changeSwagger(value)
     };
 
     loadSpec = (url) => {
@@ -150,18 +152,16 @@ export default class Topbar extends React.Component {
             })
 
             control.push(
-                <label className="select-label" htmlFor="select"><span>Select a spec</span>
+                <input className="download-url-input" placeholder="yourdomain.nl" type="text" onChange={this.onHostChange}
+                       value={this.state.host} disabled={isLoading} style={inputStyle}/>)
+            control.push(
+                <label className="select-label" htmlFor="select">
                     <select id="select" disabled={isLoading} onChange={this.onUrlSelect}
                             value={urls[this.state.selectedIndex].url}>
                         {rows}
                     </select>
                 </label>
             )
-            control.push(<input className="download-url-input" placeholder="yourdomain.nl" type="text" onChange={this.onHostChange}
-                                value={this.state.host} disabled={isLoading} style={inputStyle}/>)
-            control.push(<Button className="download-url-button" onClick={() => {
-                this.changeSwagger(this.state.host)
-            }}>Change host</Button>)
         }
 
         return (
@@ -173,6 +173,7 @@ export default class Topbar extends React.Component {
                             <span>Clearvox Nexxt API</span>
                         </Link>
                         <form className="download-url-wrapper" onSubmit={formOnSubmit}>
+                            <label className="select-label" htmlFor="input"><span>Host</span></label>
                             {control.map((el, i) => cloneElement(el, {key: i}))}
                         </form>
                     </div>
